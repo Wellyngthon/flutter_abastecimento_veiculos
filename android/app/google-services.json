@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573915529309",
+    "project_id": "flutter-abastecimento-veiculos",
+    "storage_bucket": "flutter-abastecimento-veiculos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573915529309:android:699c51c4ab28b57a240db4",
+        "android_client_info": {
+          "package_name": "com.example.abastecimento_veiculos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARB_SjLWAe3AlPr9S89j8n6M47Hsd1N8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
