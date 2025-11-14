@@ -1,3 +1,4 @@
+import 'package:abastecimento_veiculos/listar_veiculos.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:abastecimento_veiculos/cadastro.dart';
@@ -22,6 +23,10 @@ class _LoginTelaState extends State<LoginTela> {
           email: _emailController.text.trim(),
           password: _senhaController.text.trim(),
         );
+        Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => ListaVeiculosTela()),
+);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login realizado com sucesso!')),
         );
