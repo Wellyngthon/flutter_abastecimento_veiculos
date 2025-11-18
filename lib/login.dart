@@ -23,9 +23,8 @@ class _LoginTelaState extends State<LoginTela> {
           email: _emailController.text.trim(),
           password: _senhaController.text.trim(),
         );
-        Navigator.pushReplacement(
-  context,
-  MaterialPageRoute(builder: (context) => ListaVeiculosTela()),
+        Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => ListaVeiculosTela()),
 );
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login realizado com sucesso!')),

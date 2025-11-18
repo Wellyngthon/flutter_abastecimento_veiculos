@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'cadastro_veiculos.dart';
+import 'lista_abastecimento.dart';
 
 class ListaVeiculosTela extends StatelessWidget {
   @override
@@ -35,7 +36,20 @@ class ListaVeiculosTela extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
+                      icon: Icon(Icons.local_gas_station),
+                      tooltip: 'Ver abastecimentos',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ListaAbastecimentosTela(veiculoId: doc.id),
+                          ),
+                        );
+                      },
+                    ),
+                    IconButton(
                       icon: Icon(Icons.edit),
+                      tooltip: 'Editar veículo',
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -49,9 +63,10 @@ class ListaVeiculosTela extends StatelessWidget {
                       },
                     ),
                     IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      veiculosRef.doc(doc.id).delete();
+                      icon: Icon(Icons.delete),
+                      tooltip: 'Excluir veículo',
+                      onPressed: () {
+                        veiculosRef.doc(doc.id).delete();
                       },
                     ),
                   ],
@@ -66,6 +81,7 @@ class ListaVeiculosTela extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (_) => CadastroVeiculoTela()));
         },
         child: Icon(Icons.add),
+        tooltip: 'Cadastrar novo veículo',
       ),
     );
   }
