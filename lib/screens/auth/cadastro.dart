@@ -1,6 +1,7 @@
+import 'package:abastecimento_veiculos/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:abastecimento_veiculos/login.dart';
+import 'package:abastecimento_veiculos/screens/auth/login.dart';
 
 class CadastroTela extends StatefulWidget {
   @override
@@ -43,6 +44,7 @@ class _CadastroTelaState extends State<CadastroTela> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Cadastro - Gas Station App')),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(

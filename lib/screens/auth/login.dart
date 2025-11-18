@@ -1,7 +1,7 @@
-import 'package:abastecimento_veiculos/listar_veiculos.dart';
+import 'package:abastecimento_veiculos/screens/veiculos/listar_veiculos.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:abastecimento_veiculos/cadastro.dart';
+import 'package:abastecimento_veiculos/screens/auth/cadastro.dart';
 
 class LoginTela extends StatefulWidget {
   @override

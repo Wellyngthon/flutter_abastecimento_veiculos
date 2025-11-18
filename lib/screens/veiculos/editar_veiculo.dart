@@ -1,28 +1,46 @@
+import 'package:abastecimento_veiculos/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class CadastroVeiculoTela extends StatefulWidget {
+
+class EditarVeiculoTela extends StatefulWidget {
+  final String id;
+  final Map<String, dynamic> dados;
+
+  EditarVeiculoTela({required this.id, required this.dados});
+
   @override
-  _CadastroVeiculoTelaState createState() => _CadastroVeiculoTelaState();
+  _EditarVeiculoTelaState createState() => _EditarVeiculoTelaState();
 }
 
-class _CadastroVeiculoTelaState extends State<CadastroVeiculoTela> {
+class _EditarVeiculoTelaState extends State<EditarVeiculoTela> {
   final _formKey = GlobalKey<FormState>();
-  final _modeloController = TextEditingController();
-  final _marcaController = TextEditingController();
-  final _placaController = TextEditingController();
-  final _anoController = TextEditingController();
-  final _tipoCombustivelController = TextEditingController();
+  late TextEditingController _modeloController;
+  late TextEditingController _marcaController;
+  late TextEditingController _placaController;
+  late TextEditingController _anoController;
+  late TextEditingController _tipoCombustivelController;
 
-  Future<void> _salvarVeiculo() async {
+  @override
+  void initState() {
+    super.initState();
+    _modeloController = TextEditingController(text: widget.dados['modelo']);
+    _marcaController = TextEditingController(text: widget.dados['marca']);
+    _placaController = TextEditingController(text: widget.dados['placa']);
+    _anoController = TextEditingController(text: widget.dados['ano']);
+    _tipoCombustivelController = TextEditingController(text: widget.dados['tipoCombustivel']);
+  }
+
+  Future<void> _atualizarVeiculo() async {
     if (_formKey.currentState!.validate()) {
       final uid = FirebaseAuth.instance.currentUser!.uid;
       await FirebaseFirestore.instance
           .collection('veiculos')
           .doc(uid)
           .collection('lista')
-          .add({
+          .doc(widget.id)
+          .update({
         'modelo': _modeloController.text.trim(),
         'marca': _marcaController.text.trim(),
         'placa': _placaController.text.trim(),
@@ -36,7 +54,8 @@ class _CadastroVeiculoTelaState extends State<CadastroVeiculoTela> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Cadastrar Veículo')),
+      appBar: AppBar(title: Text('Editar Veículo')),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -71,8 +90,8 @@ class _CadastroVeiculoTelaState extends State<CadastroVeiculoTela> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _salvarVeiculo,
-                child: Text('Salvar'),
+                onPressed: _atualizarVeiculo,
+                child: Text('Atualizar'),
               ),
             ],
           ),

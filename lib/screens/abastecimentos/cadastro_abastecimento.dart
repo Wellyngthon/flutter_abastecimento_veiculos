@@ -1,3 +1,4 @@
+import 'package:abastecimento_veiculos/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -85,6 +86,7 @@ class _CadastroAbastecimentoTelaState extends State<CadastroAbastecimentoTela> {
 
     return Scaffold(
       appBar: AppBar(title: Text(isEdicao ? 'Editar Abastecimento' : 'Novo Abastecimento')),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(

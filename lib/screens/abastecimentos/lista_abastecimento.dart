@@ -1,3 +1,4 @@
+import 'package:abastecimento_veiculos/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +24,7 @@ class ListaAbastecimentosTela extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('Abastecimentos')),
+      drawer: AppDrawer(),
       body: StreamBuilder<QuerySnapshot>(
         stream: abastecimentosQuery.snapshots(),
         builder: (context, snapshot) {

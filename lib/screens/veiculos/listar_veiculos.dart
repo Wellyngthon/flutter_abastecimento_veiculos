@@ -1,9 +1,10 @@
-import 'package:abastecimento_veiculos/editar_veiculo.dart';
+import 'package:abastecimento_veiculos/app_drawer.dart';
+import 'package:abastecimento_veiculos/screens/veiculos/editar_veiculo.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'cadastro_veiculos.dart';
-import 'lista_abastecimento.dart';
+import '../abastecimentos/lista_abastecimento.dart';
 
 class ListaVeiculosTela extends StatelessWidget {
   @override
@@ -13,6 +14,7 @@ class ListaVeiculosTela extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('Meus Veículos')),
+      drawer: AppDrawer(),
       body: StreamBuilder<QuerySnapshot>(
         stream: veiculosRef.snapshots(),
         builder: (context, snapshot) {
